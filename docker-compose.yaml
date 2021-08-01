@@ -1,0 +1,22 @@
+version: "3"
+services:
+  db:
+    image: mongo:3.2.4
+    container_name: "db"
+    ports:
+      - 27017:27017
+    command: --smallfiles
+    volumes:
+      - ./docker/mongo/:/data/db:rw
+  api:
+    build: ./
+    ports:
+      - 9091:8080
+    environment:
+          SPRING_DATA_MONGODB_HOST: db
+          SPRING_PROFILES_ACTIVE: development
+          FILE_UPLOAD-DIR: /app/files
+    volumes:
+      - ./docker/app/files:/app/files:rw
+    links:
+      - db
