@@ -83,10 +83,7 @@ public class ComicController extends AbstractController{
             description = "Create new comic.", tags = "Comics")
     @ApiResponse(responseCode = "200", description = "comic create")
     @ApiResponse(responseCode = "400", description = "Invalid comic parameters")
-    @PostMapping(value = "/",
-            consumes={MediaType.APPLICATION_JSON_VALUE},
-            produces = {MediaType.APPLICATION_JSON_VALUE} )
-    @RequestMapping
+    @PostMapping(value = "/", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE} )
     public ResponseEntity create(
             @io.swagger.v3.oas.annotations.parameters.RequestBody(
                     description = "Created comic object", required = true,

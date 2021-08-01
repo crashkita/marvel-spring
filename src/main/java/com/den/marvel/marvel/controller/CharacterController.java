@@ -83,7 +83,7 @@ public class CharacterController extends AbstractController{
             description = "Create new character.", tags = "Characters")
     @ApiResponse(responseCode = "200", description = "character create")
     @ApiResponse(responseCode = "400", description = "Invalid character parameters")
-    @PostMapping(value = "/")
+    @PostMapping(value = "/", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE} )
     public ResponseEntity create(
             @io.swagger.v3.oas.annotations.parameters.RequestBody(
                     description = "Created character object", required = true,
